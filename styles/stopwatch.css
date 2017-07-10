@@ -1,0 +1,7 @@
+.game-area__buttons-block {
+  display: flex;
+}
+
+.game-area__button{
+  margin-left: 5px;
+}
