@@ -1,0 +1,40 @@
+.game-area{
+  display: flex;
+  flex-direction: column;
+}
+.game-area__row {
+  display: flex;
+  width: 50%;
+  flex-direction: row;
+  align-items: flex-start;
+  align-content: flex-start;
+}
+.game-area__element {
+  margin: 5px;
+  background-color: grey;
+  width: 50px;
+  height: 50px;
+  color: white;
+}
+
+.game-area__element.initial{
+  color: transparent;
+}
+
+.game-area__element.initial:hover {
+  cursor: pointer;
+}
+
+.timer {
+  display: flex;
+}
+
+.game-area__element.clicked {
+  background-color: pink;
+}
+
+
+.game-area__element.filled {
+  background-color: red;
+  display: block;
+}
