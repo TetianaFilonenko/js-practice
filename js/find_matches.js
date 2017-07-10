@@ -34,9 +34,7 @@ function resetEverything() {
   clickedItems = [];
   var elements = document.querySelectorAll('.game-area__element');
   for(var i = 0; i < elements.length; i++){
-    elements[i].classList.add('initial');
-    elements[i].classList.remove('clicked');
-    elements[i].classList.remove('filled');
+    elements[i].classList.add('initial').remove('clicked').remove('filled');
   }
 };
 
@@ -75,25 +73,26 @@ function timerInit(){
 };
 
 function checkResult(){
-  if (clickedItems.length == 2) {
+  if (clickedItems.length === 2) {
     checkClickedItems(); 
   };
   checkFullResult();
 };
 
 function checkClickedItems(){
-  if (clickedItems[0].innerHTML == clickedItems[1].innerHTML) {
-    clickedItems[0].classList.add('filled');
-    clickedItems[1].classList.add('filled');
+  if (clickedItems[0].innerHTML === clickedItems[1].innerHTML) {
+    clickedItems.map(function(element){
+      element.classList.add('filled')
+    });
     clickedItems = [];
   } else {
     setTimeout(function(){
-      clickedItems[0].classList.remove('clicked');
-      clickedItems[1].classList.remove('clicked');
-      clickedItems[0].classList.add('initial');
-      clickedItems[1].classList.add('initial');
+      clickedItems.map(function(element){
+        element.classList.add('initial')
+        element.classList.remove('clicked');
+      });
       clickedItems = [];
-    }, 1000)
+    }, 500)
   }
 };
 
@@ -125,7 +124,7 @@ function makeUniqueRandom(uniq_count) {
 function checkFullResult() {
   var elements = document.querySelectorAll('.game-area__element');
   var filled_elements = document.querySelectorAll('.game-area__element.filled');
-  if (elements.length == filled_elements.length) {
+  if (elements.length === filled_elements.length) {
     clearInterval(timerId);
     alert('win');
   }
